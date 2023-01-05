@@ -6594,7 +6594,7 @@ function getRandomColor() {
   ];
 
   // Your code below
-
+  return randomColor;
   // Your code above
 }
 
@@ -6604,10 +6604,33 @@ function getRandomQuote() {
   ];
 
   // Your code below
-
+  return randomQuote;
   // Your code above
 }
 
 // Your code below
+const button = document.getElementById("new-quote");
+const textHolder   = document.getElementById("text");
+const authorHolder = document.getElementById("author");
 
+
+button.addEventListener("click", function() {
+  generateQuote();
+});
+
+generateQuote();
+
+
+function generateQuote() {
+  const color = getRandomColor();
+  const {text, author} = getRandomQuote();
+  
+  textHolder.textContent = text;
+  authorHolder.textContent = author ?? "Anonymous";
+
+  Object.assign(document.body.style, {
+    color, backgroundColor: color,
+  });
+  button.style.backgroundColor = color;
+}
 // Your code above
